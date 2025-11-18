@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cultura de Paz — Promoviendo Convivencia</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#7dd3fc;
+      --glass: rgba(255,255,255,0.04);
+      --radius:18px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;
+      background: linear-gradient(180deg,#071028 0%,#081226 50%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px;
+    }
+    .container{max-width:1100px;margin:0 auto}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;margin-bottom:26px
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04263b}
+    h1{margin:0;font-size:1.4rem}
+    p.lead{margin:0;color:var(--muted)}
+
+    .hero{
+      background-image:url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1400&q=70');
+      background-size:cover;background-position:center;border-radius:var(--radius);padding:48px;box-shadow:0 10px 30px rgba(2,6,23,0.6);position:relative;overflow:hidden
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.3),rgba(2,6,23,0.6));border-radius:inherit}
+    .hero-inner{position:relative;z-index:2;display:flex;gap:24px;align-items:center}
+    .hero-text{flex:1}
+    .cta{display:inline-block;margin-top:16px;padding:10px 18px;border-radius:12px;background:rgba(255,255,255,0.08);backdrop-filter:blur(6px);text-decoration:none;color:var(--accent);font-weight:600}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+    .card{background:var(--glass);padding:14px;border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+    .card h3{margin:10px 0 6px;font-size:1.05rem}
+    .card p{margin:0;color:var(--muted);font-size:0.95rem}
+
+    section{margin-top:26px}
+    .two-col{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    article{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:14px}
+    aside{position:sticky;top:28px;padding:18px;background:var(--card);border-radius:14px}
+
+    footer{margin-top:28px;padding:16px;color:var(--muted);text-align:center;font-size:0.95rem}
+
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:600;margin-right:8px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .two-col{grid-template-columns:1fr}
+      aside{position:static}
+    }
+    @media (max-width:520px){
+      .grid{grid-template-columns:1fr}
+      body{padding:18px}
+      .logo{width:48px;height:48px}
+    }
+
+    /* simple modal for images */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.8);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .18s}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal img{max-width:92%;max-height:86%;border-radius:10px}
+    .close-btn{position:absolute;right:26px;top:26px;background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">CP</div>
+        <div>
+          <h1>Cultura de Paz</h1>
+          <p class="lead">Ideas, prácticas y acciones para convivir mejor — transformando conflictos en oportunidades.</p>
+        </div>
+      </div>
+      <div>
+        <button id="themeBtn" class="cta" title="Cambiar tema">Modo claro/oscuro</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner container">
+          <div class="hero-text">
+            <h2 style="margin:0 0 8px;font-size:2rem">Construyendo paz desde lo cotidiano</h2>
+            <p style="margin:0;color:var(--muted);max-width:720px">La cultura de paz promueve valores como el respeto, la solidaridad, la escucha y la resolución no violenta de conflictos. Esta página reúne ideas prácticas, recursos visuales y actividades para impulsar ambientes más justos y armónicos.</p>
+            <a href="#practicas" class="cta">Ver prácticas</a>
+          </div>
+          <div style="width:320px;display:none;"> <!-- espacio para ilustración opcional -->
+          </div>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Galería rápida">
+        <div class="card" onclick="openModal(this)" role="button">
+          <img src="https://images.unsplash.com/photo-1506812574058-fc75fa93fead?auto=format&fit=crop&w=1200&q=70" alt="Manos unidas simbolizando cooperación">
+          <h3>Cooperación y diálogo</h3>
+          <p>Espacios donde se prioriza la comunicación y el interés común.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)" role="button">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=70" alt="Persona pintando un mural de paz">
+          <h3>Expresión creativa</h3>
+          <p>El arte como herramienta para transformar heridas y construir identidad.</p>
+        </div>
+
+        <div class="card" onclick="openModal(this)" role="button">
+          <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1200&q=70" alt="Grupo comunitario conversando al aire libre">
+          <h3>Participación comunitaria</h3>
+          <p>Tomar decisiones juntos fortalece el tejido social y la confianza.</p>
+        </div>
+      </section>
+
+      <section class="two-col" id="practicas">
+        <article>
+          <h2>Principios básicos</h2>
+          <p class="tag">Respeto</p><p class="tag">Escucha</p><p class="tag">Solidaridad</p>
+          <p>La cultura de paz se sostiene sobre prácticas diarias: escuchar activamente, validar emociones, impulsar la participación, educar para la no violencia y garantizar derechos. Aquí hay algunas acciones concretas que puedes aplicar hoy:</p>
+
+          <h3>Actividades prácticas</h3>
+          <ul>
+            <li><strong>Circulos de diálogo:</strong> reuniones periódicas donde cada persona tiene tiempo para hablar sin interrupciones.</li>
+            <li><strong>Proyectos colaborativos:</strong> jardinería, murales o ferias que unan distintos grupos.</li>
+            <li><strong>Educación emocional:</strong> talleres para identificar y regular emociones.</li>
+            <li><strong>Mediación comunitaria:</strong> formar facilitadores que ayuden a resolver conflictos.</li>
+          </ul>
+
+          <h3>Recursos multimedia</h3>
+          <p>Las imágenes y videos ayudan a sensibilizar. Utiliza fotografías reales, testimonios y piezas educativas para acompañar talleres y campañas.</p>
+
+          <h3>¿Cómo empezar?</h3>
+          <ol>
+            <li>Identifica actores clave (escuelas, vecinos, organizaciones).</li>
+            <li>Diseña una actividad pequeña y medible (p. ej., un taller de 2 horas).</li>
+            <li>Evalúa lo aprendido y comparte resultados públicamente.</li>
+          </ol>
+        </article>
+
+        <aside>
+          <h3>Recursos rápidos</h3>
+          <p style="color:var(--muted)">Ideas para usar ya:</p>
+          <ul>
+            <li>Ficha: 5 preguntas para facilitar un círculo de diálogo.</li>
+            <li>Plantilla para planificar un proyecto comunitario (1 página).</li>
+            <li>Lista de verificación para eventos inclusivos.</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Comparte</h4>
+          <p style="color:var(--muted)">Imprime carteles, comparte en redes y convoca a vecinos para pequeñas acciones.</p>
+        </aside>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <strong>Cultura de Paz</strong> — Diseñado para inspirar acción. — <small style="color:var(--muted)">Hecho con ♥</small></div>
+    </footer>
+  </div>
+
+  <!-- modal para ver imagenes grande -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="close-btn" onclick="closeModal()">✕</div>
+    <img id="modalImg" src="" alt="Imagen ampliada">
+  </div>
+
+  <script>
+    // Theme toggle (simple: light / dark by inverting colors)
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', ()=>{
+      if(document.documentElement.style.getPropertyValue('--bg') === ''){
+        // use inline toggling: swap background to light
+        document.body.style.background = 'linear-gradient(180deg,#f7fbff 0%,#eef6ff 50%)';
+        document.body.style.color = '#052028';
+        document.querySelectorAll('.card').forEach(c=>c.style.background='rgba(2,6,23,0.04)');
+      } else {
+        location.reload(); // quick way to restore default dark style
+      }
+    });
+
+    // modal open
+    function openModal(card){
+      const img = card.querySelector('img');
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
+      modalImg.src = img.src + '&auto=format&fit=crop&w=1600&q=80';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal(){
+      const modal = document.getElementById('modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.getElementById('modalImg').src = '';
+    }
+    // close on click outside
+    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeModal(); });
+  </script>
+</body>
+</html>
